@@ -10,11 +10,25 @@ remaining_time = 0
 def speak(hours_to_say, minutes_to_say):
     if hours_to_say != 0:
         if hours_to_say == 1:
-            jarvis.say(f"Shutdown after {hours_to_say} hour and {minutes_to_say} minutes")
-        else:
-            jarvis.say(f"Shutdown after {hours_to_say} hours and {minutes_to_say} minutes")
+            if minutes_to_say == 1:
+                jarvis.say(f"Shutdown after {hours_to_say} hour and {minutes_to_say} minute.")
+            elif minutes_to_say > 1:
+                jarvis.say(f"Shutdown after {hours_to_say} hour and {minutes_to_say} minutes.")
+            else:
+                jarvis.say(f"Shutdown after {hours_to_say} hour.")
+        elif hours_to_say > 1:
+            if minutes_to_say == 1:
+                jarvis.say(f"Shutdown after {hours_to_say} hours and {minutes_to_say} minute.")
+            elif minutes_to_say > 1:
+                jarvis.say(f"Shutdown after {hours_to_say} hours and {minutes_to_say} minutes.")
+            else:
+                jarvis.say(f"Shutdown after {hours_to_say} hours.")
+
     else:
-        jarvis.say(f"Shutdown after {minutes_to_say} minutes!")
+        if minutes_to_say == 1:
+            jarvis.say(f"Shutdown after {minutes_to_say} minute")
+        elif minutes_to_say > 1:
+            jarvis.say(f"Shutdown after {minutes_to_say} minutes")
     jarvis.runAndWait()
 
 
@@ -32,11 +46,12 @@ def shutdown_timer(hours, minutes):
 def menu():
     global remaining_time
     while True:
-        print("For time remaining enter (t). For adding time enter(e)."
+        print("For time remaining enter (t). For adding time enter(a)."
               " For stop timer enter(s). For pause the time enter(p)")
         user_input = input()
         if user_input == "t":
             print(f"Time remaining - {remaining_time}")
+
 
 
 remaining_hours = int(input("Enter countdown hours:"))
