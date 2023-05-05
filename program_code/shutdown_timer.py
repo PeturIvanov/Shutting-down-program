@@ -11,7 +11,7 @@ adding_time_seconds = 0
 stop_program = False
 
 
-# Speak function.
+# Speak function. Reports the shutdown timer.
 def speak(hours_to_say, minutes_to_say):
     if hours_to_say != 0:
         if hours_to_say == 1:
@@ -36,7 +36,7 @@ def speak(hours_to_say, minutes_to_say):
     jarvis.runAndWait()
 
 
-# Timer function.
+# Timer function. Setting the timer with hours and minutes given from the user.
 def shutdown_timer(hours, minutes):
     seconds = hours * 3600 + minutes * 60
     global remaining_time
@@ -56,7 +56,7 @@ def shutdown_timer(hours, minutes):
         os.system("shutdown /s /t 1")
 
 
-# Menu function.
+# Menu function. Gives the user options for the timer.
 def menu():
     global remaining_time
     global adding_time_seconds
