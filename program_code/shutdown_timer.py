@@ -1,14 +1,17 @@
-from pyttsx3_setting import *
+# Modules.
+import pyttsx3
 import os
 import time
 import datetime
 import threading
 
+# Global variables.
 remaining_time = 0
 adding_time_seconds = 0
 stop_program = False
 
 
+# Speak function.
 def speak(hours_to_say, minutes_to_say):
     if hours_to_say != 0:
         if hours_to_say == 1:
@@ -33,6 +36,7 @@ def speak(hours_to_say, minutes_to_say):
     jarvis.runAndWait()
 
 
+# Timer function.
 def shutdown_timer(hours, minutes):
     seconds = hours * 3600 + minutes * 60
     global remaining_time
@@ -52,6 +56,7 @@ def shutdown_timer(hours, minutes):
         os.system("shutdown /s /t 1")
 
 
+# Menu function.
 def menu():
     global remaining_time
     global adding_time_seconds
@@ -72,16 +77,24 @@ def menu():
             break
 
 
+# Voice settings.
+jarvis = pyttsx3.init('sapi5')
+voices = jarvis.getProperty('voices')
+jarvis.setProperty('voice', voices[1].id)
+
+# User input for the timer.
 input_hours = int(input("Enter countdown hours:"))
 input_minutes = int(input("Enter countdown minutes:"))
+
+# Calling the speak function.
 speak(input_hours, input_minutes)
 
-# tread for shutdown_timer.
+# Tread for shutdown_timer.
 shutdown_timer_tread = threading.Thread(target=shutdown_timer, args=(input_hours, input_minutes))
 shutdown_timer_tread.start()
 
 
-# tread for menu.
+# Tread for menu.
 menu_thread = threading.Thread(target=menu)
 menu_thread.start()
 
