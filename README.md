@@ -16,11 +16,17 @@ Requirements:
 Usage:
 
 1.Open a terminal or command prompt.
+
 2.Navigate to the directory where the script is located.
+
 3.Run the script using the command "python shutdown_timer.py" or run the program on your IDE.
+
 4.Enter the countdown hours and minutes when prompted.
+
 5.The program will speak the countdown time using text-to-speech and begin a timer.
+
 6.The program will also display a menu with options to check the remaining time, add time, or stop the timer.
+
 7.Once the timer runs out, the program will shut down the computer.
 
 Features:
