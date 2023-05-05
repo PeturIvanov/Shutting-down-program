@@ -44,4 +44,5 @@ If you find a bug or have an idea for a new feature, please create a GitHub issu
 CONCLUSION:
 
 I make this small console program for training my skills and learn new things.
+
 I also use it daily.
